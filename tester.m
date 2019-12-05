@@ -34,4 +34,11 @@ mesh = calcMesh(pointList);
 n = length(mesh);
 triplot(mesh,x,y);
   
+%% crossdissolve(im1,im2,t)
+sLena = double(readImage('lena.tif'));
+dLena = contrastEnhance(sLena,[150,255]);
+im = crossdissolve(sLena,dLena,0.8);
+showImage(sLena);
+showImage(dLena);
+showImage(im);
 %%
