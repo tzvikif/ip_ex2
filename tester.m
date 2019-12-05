@@ -27,3 +27,11 @@ vplotTR=[verticesTR;verticesTR(1,:)]; %just to plot a closed triangle, we add th
     plot(linePlot(:,1),linePlot(:,2),'.-');
     hold off
 %%
+x = gallery('uniformdata',[20,1],0);
+y = gallery('uniformdata',[20,1],1);
+pointList = [x y];
+mesh = calcMesh(pointList);
+n = length(mesh);
+triplot(mesh,x,y);
+  
+%%
