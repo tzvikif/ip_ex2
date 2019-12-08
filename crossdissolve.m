@@ -8,6 +8,6 @@ Method:
     1 line of Matlab code!
 %}
 function [newIm] = crossdissolve(im1,im2,t)
-    doubleNewIm = (1-t)*im1 + t*im2;
+    doubleNewIm = im1*(1-t) + t*im2;
     newIm = uint8(doubleNewIm);
 end
