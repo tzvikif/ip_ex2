@@ -33,12 +33,13 @@ function [imWarped] = warpImage(imSource,pointsSource,pointsDest,mesh)
             [triPd1,triPd2,triPd3,rowNum] = findTriangle(pd,pointsDest,mesh);
             [alpha,beta,gamma] = BarycentricCoordinates(pd,triPd1,triPd2,triPd3);
             %% using inverse mapping with [alpha,beta,gamma]
-            triPs = pointsSource(mesh(rowNum));
-            ps = BarycentricToEuclidean(alpha,beta,gamma,triPs(1),triPs(2),triPs(3));
+            triPs = pointsSource(mesh(rowNum,:),:);
+            ps = BarycentricToEuclidean(alpha,beta,gamma,triPs(1,:),triPs(2,:),triPs(3,:));
             ps = round(ps); %%using NN interpolation
             interpolatedColor = imSource(ps);
-            imWarped(p) = interpolatedColor;
+            imWarped(i,j) = interpolatedColor;
         end
     end
-
+    a = 5;
+    
 end

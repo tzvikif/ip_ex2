@@ -5,6 +5,7 @@ Method:
     Use matrix method as shown in lesson slides.
 %}
 function [alpha,beta,gamma] = BarycentricCoordinates(P,A,B,C)
+    P = [P 1];
     Ax = A(1,1);
     Ay = A(1,2);
     Bx = B(1,1);

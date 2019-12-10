@@ -29,8 +29,11 @@ vplotTR=[verticesTR;verticesTR(1,:)]; %just to plot a closed triangle, we add th
 %%
 x = gallery('uniformdata',[20,1],0);
 y = gallery('uniformdata',[20,1],1);
-pointList = [x y];
-mesh = calcMesh(pointList);
+x = fixedPoints1(:,1);
+y = fixedPoints1(:,2);
+hold on;
+plot(x,y,'ro');
+mesh = calcMesh(fixedPoints1);
 n = length(mesh);
 triplot(mesh,x,y);
   
@@ -41,4 +44,8 @@ im = crossdissolve(sLena,dLena,0.8);
 showImage(sLena);
 showImage(dLena);
 showImage(im);
+%%
+daphna = readImage('Daphna.tiff');
+Tzviki = readImage('Tzviki.tiff');
+createMorphSequence(Tzviki,daphna,fixedPoints,movingPoints,4,"frames");
 %%
