@@ -26,17 +26,31 @@ function [imWarped] = warpImage(imSource,pointsSource,pointsDest,mesh)
     col = size(imSource,2);
     row = size(imSource,1);
     imWarped = zeros(row,col);
-    
+    %%plotMesh(pointsDest,mesh);
     for i=1:row
         for j=1:col
             pd = [i,j];
             [triPd1,triPd2,triPd3,rowNum] = findTriangle(pd,pointsDest,mesh);
+            %%plotTriangle(pd,triPd1,triPd2,triPd3,imWarped);
             [alpha,beta,gamma] = BarycentricCoordinates(pd,triPd1,triPd2,triPd3);
             %% using inverse mapping with [alpha,beta,gamma]
             triPs = pointsSource(mesh(rowNum,:),:);
             ps = BarycentricToEuclidean(alpha,beta,gamma,triPs(1,:),triPs(2,:),triPs(3,:));
-            ps = round(ps); %%using NN interpolation
-            interpolatedColor = imSource(ps);
+            ps = round(abs(ps)); %%using NN interpolation
+            %%plotTriangle(ps,triPs(1,:),triPs(2,:),triPs(3,:),'g*');
+            if(ps(1) == 0)
+                ps(1) = 1;
+            end
+            if(ps(2) == 0)
+                ps(2) = 1;
+            end
+            if(ps(1) > col)
+                ps(1) = col;
+            end
+            if(ps(2) > row)
+                ps(2) = row;
+            end
+            interpolatedColor = imSource(ps(1),ps(2));
             imWarped(i,j) = interpolatedColor;
         end
     end

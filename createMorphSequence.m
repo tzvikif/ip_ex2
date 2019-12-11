@@ -1,4 +1,4 @@
-function createMorphSequence(imSource,ImTarget,pointsSource,PointsTarget,numFrames,fileName)
+function createMorphSequence(imSource,imTarget,pointsSource,PointsTarget,numFrames,fileName)
     meshForMorph = calcMesh(pointsSource);
     cols = size(imSource,1);
     rows = size(imSource,2);
@@ -7,10 +7,10 @@ function createMorphSequence(imSource,ImTarget,pointsSource,PointsTarget,numFram
     for t=linspace(0,1,numFrames)
         intermediatePointsSource = calcIntermediateMesh(pointsSource,PointsTarget,t);
         imST = warpImage(imSource,pointsSource,intermediatePointsSource,meshForMorph);
-        imTT = warpImage(ImTarget,PointsTarget,intermediatePointsSource,meshForMorph);
+        imTT = warpImage(imTarget,PointsTarget,intermediatePointsSource,meshForMorph);
         frame = crossdissolve(imST,imTT,t);
         frames(i,:,:) = frame;
-        i = i +1;
+        i = i + 1;
     end
     a = 5;
     
