@@ -45,7 +45,8 @@ showImage(sLena);
 showImage(dLena);
 showImage(im);
 %%
+numFrames = 10;
 daphna = readImage('Daphna.tiff');
 Tzviki = readImage('Tzviki.tiff');
-createMorphSequence(Tzviki,daphna,fixedPoints,movingPoints,4,"frames");
+createMorphSequence(Tzviki,daphna,fixedPoints2,movingPoints2,numFrames,"frames.avi");
 %%

@@ -27,10 +27,11 @@ function [imWarped] = warpImage(imSource,pointsSource,pointsDest,mesh)
     row = size(imSource,1);
     imWarped = zeros(row,col);
     %%plotMesh(pointsDest,mesh);
+    rowNum = 1;
     for i=1:row
         for j=1:col
             pd = [i,j];
-            [triPd1,triPd2,triPd3,rowNum] = findTriangle(pd,pointsDest,mesh);
+            [triPd1,triPd2,triPd3,rowNum] = findTriangle(pd,pointsDest,mesh,rowNum);
             %%plotTriangle(pd,triPd1,triPd2,triPd3,imWarped);
             [alpha,beta,gamma] = BarycentricCoordinates(pd,triPd1,triPd2,triPd3);
             %% using inverse mapping with [alpha,beta,gamma]
