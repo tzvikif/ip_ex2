@@ -12,4 +12,5 @@ function P = BarycentricToEuclidean(alpha,beta,gamma,A,B,C)
     px = p(1);
     py = p(2);
     P = [p(1),p(2)];
+    
 end
