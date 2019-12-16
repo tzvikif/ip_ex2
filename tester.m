@@ -18,7 +18,7 @@ axis equal;
 plot(p(1,1),p(1,2),'o');
 %compute the corresponding point on the reference triangle
 pTR= alpha*verticesTR(1,:)+beta*verticesTR(2,:)+gamma*verticesTR(3,:)
-[px,py] = BarycentricToEuclidean(alpha,beta,gamma,verticesTR(1,:),verticesTR(2,:),verticesTR(3,:));
+[p] = BarycentricToEuclidean(alpha,beta,gamma,verticesTR(1,:),verticesTR(2,:),verticesTR(3,:));
 pTR = [pTR 1];
 vplotTR=[verticesTR;verticesTR(1,:)]; %just to plot a closed triangle, we add the first point at the end
     plot(vplotTR(:,1),vplotTR(:,2));
@@ -45,8 +45,8 @@ showImage(sLena);
 showImage(dLena);
 showImage(im);
 %%
-numFrames = 10;
+numFrames = 30
 daphna = readImage('Daphna.tiff');
 Tzviki = readImage('Tzviki.tiff');
-createMorphSequence(Tzviki,daphna,fixedPoints2,movingPoints2,numFrames,"frames.avi");
+createMorphSequence(Tzviki,daphna,movingPoints,fixedPoints,numFrames,"frames.avi");
 %%

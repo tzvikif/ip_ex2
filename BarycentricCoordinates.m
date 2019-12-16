@@ -6,17 +6,16 @@ Method:
 %}
 function [alpha,beta,gamma] = BarycentricCoordinates(P,A,B,C)
     P = [P 1];
-    Ax = A(1,1);
-    Ay = A(1,2);
-    Bx = B(1,1);
-    By = B(1,2);
-    Cx = C(1,1);
-    Cy = C(1,2);
+    Ay = A(1,1);
+    Ax = A(1,2);
+    By = B(1,1);
+    Bx = B(1,2);
+    Cy = C(1,1);
+    Cx = C(1,2);
     M = [Ax,Bx,Cx;Ay,By,Cy;1,1,1];
+    M = [Ay,By,Cy;Ax,Bx,Cx;1,1,1];
     X = inv(M)*P';
     alpha = X(1,1);
     beta = X(2,1);
-    gamma = X(3,1);
-     
-
+    gamma = X(3,1); 
 end

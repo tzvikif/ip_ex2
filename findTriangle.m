@@ -10,14 +10,6 @@ function [p1,p2,p3,rowNum] = findTriangle(P,pointsList,mesh,varargin)
             p3 = pointsList(currentTriangle(3),:);
             found = pointInTriangle(P,p1,p2,p3);
         end
-        %{
-        if(~found)
-            %%fprintf("Error!!!");
-            plotTriangle(P,p1,p2,p3,'rx');
-        else
-            plotTriangle(P,p1,p2,p3,'bx');
-        end
-        %}
         %{ straight forward %}
     elseif  nargin == 4 
         %{ cleverer way %}
