@@ -31,7 +31,7 @@ function [imWarped] = warpImage(imSource,pointsSource,pointsDest,mesh)
     %%the rownumber of the last used triangle
     for i=1:row
         for j=1:col
-            pd = [i,j];
+            pd = [j,i];
             [triPd1,triPd2,triPd3,rowNum] = findTriangle(pd,pointsDest,mesh,rowNum);
             [alpha,beta,gamma] = BarycentricCoordinates(pd,triPd1,triPd2,triPd3);
             %% using inverse mapping with [alpha,beta,gamma]
