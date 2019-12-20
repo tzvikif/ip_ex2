@@ -1,4 +1,6 @@
 %{
+author: Tzvi Fisher 037580644
+        Daphna Kopel 209051036
 Input:    im1,im2  – 2D matrices of the same size.
     These are grayscale images with values the range [0..255] in double format
     t -  a value in [0 1]

@@ -1,4 +1,6 @@
 %{
+author: Tzvi Fisher 037580644
+        Daphna Kopel 209051036
 Input:    P,A,B,C –  a 1X2 matrix (x,y) containing a point in 2D
     Output: alpha,beta,gamma – scalars representing the Barycentric coordinates of P in triangle A,B,C
 Method:
